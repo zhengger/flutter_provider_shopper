@@ -4,8 +4,9 @@ A new Flutter project.
 
 ## Getting Started
 
-[img](https://flutter.dev/assets/development/data-and-backend/state-mgmt/simple-widget-tree-with-cart-088b22c4ef4e4389a1cababaceaadcd36ba3de37613080942885263c36e29595.png)
-This project is a starting point for a Flutter application.
+![image](https://flutter.dev/assets/development/data-and-backend/state-mgmt/simple-widget-tree-with-cart-088b22c4ef4e4389a1cababaceaadcd36ba3de37613080942885263c36e29595.png)
+
+This project is a starting point for provider state management.
 
 A few resources to get you started if this is your first Flutter project:
 
