@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+// import 'package:provider_example/main.dart';
 import 'package:provider_example/models/cart.dart';
 import 'package:provider_example/models/src/item.dart';
 import 'package:provider/provider.dart';
 
-
+// ignore: public_member_api_docs
 /// The app bar in the catalog.
 ///
 /// No need to access shared state here.
@@ -30,7 +31,8 @@ class MyAppBar extends StatelessWidget {
 /// The catalog screen itself, with its app bar and an infinite list of items.
 ///
 /// No need to access shared state here.
-class MyCatalog extends StatelessWidget {
+class MyCatalog extends StatelessWidget{
+  // ignore: public_member_api_docs
   MyCatalog({Key key}) : super(key: key);
 
   @override
@@ -38,7 +40,9 @@ class MyCatalog extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
+          // ignore: prefer_const_constructors
           MyAppBar(),
+          // ignore: prefer_const_constructors
           SliverToBoxAdapter(child: SizedBox(height: 12)),
           SliverList(
             delegate: SliverChildBuilderDelegate(
@@ -55,7 +59,6 @@ class MyCatalog extends StatelessWidget {
 /// It allows adding its [item] to cart via the [_AddButton] widget.
 class MyListItem extends StatelessWidget {
   final int index;
-
   final Item item;
 
   MyListItem(
@@ -101,22 +104,24 @@ class _AddButton extends StatelessWidget {
     Key key,
     @required this.item,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     // Here is where we access the shared state of the cart. Because we
     // need to change the UI here according to the contents of the cart,
     // we use the ScopedModelDescendant widget (instead of ScopedModel.of).
+    // ignore: omit_local_variable_types
+  final cart = Provider.of<CartModel>(context);
     return FlatButton(
             // We check whether the cart already has the item in it,
             // and if so, we give `null` to onPressed (making it disabled).
             // Otherwise, we provide a callback that calls a method
-            // on the cart model.
-            onPressed: Provider.of<CartModel>(context).items.contains(item) ? null : () => Provider.of<CartModel>(context).items.add(item),
+            // on thecart
+            onPressed: cart.items.contains(item) ? null : () => cart.items.add(item),
             splashColor: Colors.yellow,
             // Similarly, we change the content of the button according
             // to the state of the cart.
-            child: Provider.of<CartModel>(context).items.contains(item) ? Icon(Icons.check) : Text('ADD'),
+            child: cart.items.contains(item) ? Icon(Icons.check) : Text('ADD'),
+            // child: Provider.of<CartModel>(context).items.contains(item) ? Icon(Icons.check) : Text('ADD'),
     );
   }
 }

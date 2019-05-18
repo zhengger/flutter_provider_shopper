@@ -1,8 +1,10 @@
 // import 'dart:collection';
 import 'package:provider_example/models/src/item.dart';
 // import 'package:provider/provider.dart';
+import 'package:flutter/material.dart';
 
-class CartModel {
+// ignore: public_member_api_docs
+class CartModel with ChangeNotifier {
   /// Internal, private state of the cart.
   final List<Item> _items = [];
 
@@ -17,11 +19,11 @@ class CartModel {
     _items.add(item);
     // This line tells [Model] that it should rebuild the widgets that
     // depend on it.
-    // notifyListeners();
+    notifyListeners();
   }
 
   /// Remove all items in the cart.
-  void dispose() {
-    _items.clear();
-  }
+  // void dispose() {
+  //   _items.clear();
+  // }
 }

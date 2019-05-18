@@ -11,10 +11,10 @@ void main() {
 
   // Now we're ready to run the Flutter UI.
   runApp(
-    Provider<CartModel>(
+    ChangeNotifierProvider<CartModel>(
       // Here's where we provide the model to any interested widget below.
       builder: (context) => cart,
-      dispose: (context, value) => value.dispose(),
+      // dispose: (context, value) => value.dispose(),
       child: MyApp(),
     ),
   );

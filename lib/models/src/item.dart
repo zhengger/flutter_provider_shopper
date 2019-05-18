@@ -30,5 +30,5 @@ class Item {
   int get hashCode => id;
 
   @override
-  bool operator ==(dynamic other) => other is Item && other.id == id;
+  bool operator == (dynamic other) => other is Item && other.id == id;
 }

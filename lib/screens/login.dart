@@ -21,7 +21,7 @@ class MyLoginScreen extends StatelessWidget {
     // cart.clear();
 
     // Navigate to the catalog screen.
-    Navigator.pushReplacementNamed(context, '/catalog');
+    Navigator.pushNamed(context, '/catalog');
   }
 
   @override
