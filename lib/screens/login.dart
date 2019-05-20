@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:model_shopper/models/cart.dart';
+import 'package:provider/provider.dart';
+import 'package:provider_example/models/cart.dart';
 // import 'package:scoped_model/scoped_model.dart';
 
 /// This is the login screen.
@@ -15,10 +16,10 @@ class MyLoginScreen extends StatelessWidget {
     // Here the UI doesn't depend on the state of the model. We only need
     // the model to call a method on it. Therefore, we use ScopedModel.of
     // instead of a ScopedModelDescendant widget.
-    // var cart = ScopedModel.of<CartModel>(context);
+    var cart = Provider.of<CartModel>(context);
 
     // Now that we have reference to the cart, we can clear it, for example.
-    // cart.clear();
+    cart.dispose();
 
     // Navigate to the catalog screen.
     Navigator.pushNamed(context, '/catalog');

@@ -14,16 +14,22 @@ class CartModel with ChangeNotifier {
   /// The current total price of all items (assuming all items cost $42).
   int get totalPrice => _items.length * 42;
 
+
   /// Adds [item] to cart. This is the only way to modify the cart from outside.
   void add(Item item) {
-    _items.add(item);
     // This line tells [Model] that it should rebuild the widgets that
     // depend on it.
+    _items.add(item);
+    // ignore: unused_element
+    // setState()=>items;
     notifyListeners();
   }
 
+  // @override
+  void addListener(add);
+
   /// Remove all items in the cart.
-  // void dispose() {
-  //   _items.clear();
-  // }
+  void dispose() {
+    _items.clear();
+  }
 }

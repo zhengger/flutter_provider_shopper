@@ -110,18 +110,24 @@ class _AddButton extends StatelessWidget {
     // need to change the UI here according to the contents of the cart,
     // we use the ScopedModelDescendant widget (instead of ScopedModel.of).
     // ignore: omit_local_variable_types
-  final cart = Provider.of<CartModel>(context);
-    return FlatButton(
-            // We check whether the cart already has the item in it,
-            // and if so, we give `null` to onPressed (making it disabled).
-            // Otherwise, we provide a callback that calls a method
-            // on thecart
-            onPressed: cart.items.contains(item) ? null : () => cart.items.add(item),
-            splashColor: Colors.yellow,
-            // Similarly, we change the content of the button according
-            // to the state of the cart.
-            child: cart.items.contains(item) ? Icon(Icons.check) : Text('ADD'),
-            // child: Provider.of<CartModel>(context).items.contains(item) ? Icon(Icons.check) : Text('ADD'),
+    final cart = Provider.of<CartModel>(context);
+    // print(cart.items);
+    return Consumer<CartModel>(
+    builder: (context, value, child) => FlatButton(
+              // We check whether the cart already has the item in it,
+              // and if so, we give `null` to onPressed (making it disabled).
+              // Otherwise, we provide a callback that calls a method
+              // on thecart
+              onPressed: cart.items.contains(item) ? null : (){ 
+                print(cart.items);
+                return cart.add(item);},
+              splashColor: Colors.yellow,
+              // Similarly, we change the content of the button according
+              // to the state of the cart.
+              child: cart.items.contains(item) ? Icon(Icons.check) : Text('ADD'),
+              // child: false ? Icon(Icons.check) : Text('ADD'),
+              // child: Provider.of<CartModel>(context).items.contains(item) ? Icon(Icons.check) : Text('ADD'),
+      ),
     );
   }
 }
